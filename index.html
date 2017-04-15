@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Mr.Zhang</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Mr.Zhang">
+<meta property="og:url" content="http://yoursite.com/index.html">
+<meta property="og:site_name" content="Mr.Zhang">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Mr.Zhang">
+  
+    <link rel="alternate" href="/atom.xml" title="Mr.Zhang" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Mr.Zhang</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">大道至简，大音希声</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="Flux RSS"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Rechercher"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main">
+  
+    <article id="post-十分钟使用hexo搭建博客" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/03/04/十分钟使用hexo搭建博客/" class="article-date">
+  <time datetime="2017-03-04T14:18:26.251Z" itemprop="datePublished">2017-03-04</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/03/04/十分钟使用hexo搭建博客/">十分钟使用hexo搭建博客</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>今天第一次使用hexo搭建个人博客，被hexo的快熟上手，和简单的操作吸引。让你有更多的时间关注与写作。下面就利用十分钟在本地搭建hexo个人博客。</p>
+<more>
+
+
+<h2 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h2><ol>
+<li>首先在本地安装npm包管理器(安装nodejs的时候会默认安装);</li>
+<li>通过npm全局安装hexo，<code>npm install hexo-cli -g</code></li>
+</ol>
+<h2 id="开始搭建"><a href="#开始搭建" class="headerlink" title="开始搭建"></a>开始搭建</h2><h3 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h3><p>在命令行中进入你要存放的路径<br><code>hexo init blog</code><br>执行完成之后会在当前目录下生成blog目录，如图<br><img src="/images/path.png" alt="Alt text" title="blog目录"></p>
+<h3 id="启动"><a href="#启动" class="headerlink" title="启动"></a>启动</h3><p>没错，就是这么快！<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">cd blog</div><div class="line">npm install</div><div class="line">hexo server</div></pre></td></tr></table></figure></p>
+<p>你就会看到启动成功的日志，然后访问 <a href="http://localhost:4000" target="_blank" rel="external">http://localhost:4000</a> 就会跳转到初始化的首页(source/_posts目录下)。至此，最简易的一个博客网站已经搭建成功！下面开始码字吧！</p>
+<p><img src="/images/myblog.png" alt="Alt text" title="blog"></p>
+<h3 id="创建文档"><a href="#创建文档" class="headerlink" title="创建文档"></a>创建文档</h3><p>当然开始之前需要新建一个文档。<br><code>hexo new “postname”</code><br>或者创建一个新的页面<br><code>hexo new page pagename</code></p>
+<h3 id="生成静态页面"><a href="#生成静态页面" class="headerlink" title="生成静态页面"></a>生成静态页面</h3><p>创建完文档之后，需要将文档编译成html。<br><code>hexo generate</code></p>
+<h3 id="生效"><a href="#生效" class="headerlink" title="生效"></a>生效</h3><p><code>hexo server</code><br>重新打开刚才的url，就可以看到我们刚才创建的文档了。</p>
+<p>至此，你应该可以专心去创作了！如果觉得默认主题不好看，还可以修改主题哦，只需三步：</p>
+<ol>
+<li>找到心仪的主题</li>
+<li>clone到themes目录下</li>
+<li>修改配置文件_config.yml最下面的配置<code>theme: theme name</code></li>
+</ol>
+<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
+</more>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/03/04/十分钟使用hexo搭建博客/" data-id="cizvdo05500039owfal3utgml" class="article-share-link">Partager</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Articles récents</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/03/04/十分钟使用hexo搭建博客/">十分钟使用hexo搭建博客</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 Mr.Zhang<br>
+      Propulsé by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>
