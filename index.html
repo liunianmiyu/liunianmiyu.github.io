@@ -1,20 +1,1236 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="chrome=1">
-
-    
-
-    <title>
-      Mr.Zhang 
-    </title>
-
-    
-
+<!DOCTYPE html><html lang="en"><head><meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' 'unsafe-eval' data: blob: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://code.jquery.com https://unpkg.com https://d3js.org https://threejs.org https://cdn.plot.ly https://stackpath.bootstrapcdn.com https://maps.googleapis.com https://cdn.tailwindcss.com https://ajax.googleapis.com https://kit.fontawesome.com https://cdn.datatables.net https://maxcdn.bootstrapcdn.com https://code.highcharts.com https://tako-static-assets-production.s3.amazonaws.com https://www.youtube.com https://fonts.googleapis.com https://fonts.gstatic.com https://pfst.cf2.poecdn.net https://puc.poecdn.net https://i.imgur.com https://wikimedia.org https://*.icons8.com https://*.giphy.com https://picsum.photos https://images.unsplash.com; frame-src 'self' https://www.youtube.com https://trytako.com; child-src 'self'; manifest-src 'self'; worker-src 'self'; upgrade-insecure-requests; block-all-mixed-content;">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GoGame! - Casual Gaming Paradise</title>
+    <style>
+        /* Base styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+        }
+        
+        :root {
+            --primary: #4361ee;
+            --primary-light: #4895ef;
+            --primary-dark: #3a0ca3;
+            --secondary: #f72585;
+            --accent: #7209b7;
+            --dark: #222;
+            --light: #f8f9fa;
+            --gray: #6c757d;
+            --gray-light: #dee2e6;
+            --shadow: rgba(0, 0, 0, 0.1);
+            --radius: 12px;
+            --radius-sm: 8px;
+            --transition: all 0.3s ease;
+        }
+        
+        body {
+            background-color: #f5f7fa;
+            color: var(--dark);
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+        
+        /* Header */
+        header {
+            background-color: white;
+            box-shadow: 0 4px 12px var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+        
+        .logo {
+            font-size: 25px;
+            font-weight: 700;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo-icon {
+            background-color: var(--primary);
+            color: white;
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 8px;
+            font-size: 16px;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 20px;
+        }
+        
+        nav ul li a {
+            color: var(--dark);
+            font-weight: 500;
+            padding: 8px 12px;
+            border-radius: 24px;
+            transition: var(--transition);
+        }
+        
+        nav ul li a:hover {
+            color: var(--primary);
+            background-color: rgba(67, 97, 238, 0.06);
+        }
+        
+        nav ul li a.active {
+            color: var(--primary);
+            background-color: rgba(67, 97, 238, 0.1);
+        }
+        
+        /* Banner */
+        .banner {
+            background: linear-gradient(135deg, #4361ee, #7209b7);
+            color: white;
+            border-radius: var(--radius);
+            padding: 50px 30px;
+            margin: 30px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .banner::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><path d="M30,20 L70,20 L70,80 L30,80 Z" fill="white" fill-opacity="0.05" /></svg>'),
+                              url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 60 60"><circle cx="30" cy="30" r="20" fill="white" fill-opacity="0.05" /></svg>');
+            background-position: 0 0, 30px 30px;
+            animation: bgMove 20s linear infinite;
+        }
+        
+        @keyframes bgMove {
+            0% { background-position: 0 0, 30px 30px; }
+            100% { background-position: 100px 100px, 130px 130px; }
+        }
+        
+        .banner-content {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .banner h1 {
+            font-size: 36px;
+            margin-bottom: 16px;
+            font-weight: 800;
+        }
+        
+        .banner p {
+            font-size: 18px;
+            max-width: 600px;
+            margin: 0 auto 25px;
+            opacity: 0.9;
+        }
+        
+        .search-bar {
+            max-width: 500px;
+            margin: 0 auto;
+            display: flex;
+            background-color: white;
+            border-radius: 30px;
+            padding: 5px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .search-bar input {
+            flex: 1;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 25px;
+            font-size: 16px;
+            outline: none;
+            background: transparent;
+        }
+        
+        .search-bar button {
+            background: linear-gradient(90deg, var(--primary), var(--primary-light));
+            color: white;
+            border: none;
+            border-radius: 25px;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+        
+        .search-bar button:hover {
+            background: linear-gradient(90deg, var(--primary-dark), var(--primary));
+            box-shadow: 0 2px 8px rgba(67, 97, 238, 0.3);
+        }
+        
+        /* Categories */
+        .categories {
+            margin-bottom: 40px;
+        }
+        
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .section-title {
+            font-size: 22px;
+            font-weight: 700;
+            position: relative;
+            padding-left: 16px;
+        }
+        
+        .section-title::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 4px;
+            height: 20px;
+            width: 4px;
+            background: linear-gradient(to bottom, var(--primary), var(--secondary));
+            border-radius: 4px;
+        }
+        
+        .view-all {
+            color: var(--primary);
+            font-weight: 500;
+            font-size: 14px;
+            transition: var(--transition);
+        }
+        
+        .view-all:hover {
+            color: var(--primary-dark);
+        }
+        
+        .category-cards {
+            display: flex;
+            gap: 16px;
+            overflow-x: auto;
+            padding: 4px 0 12px;
+            scrollbar-width: thin;
+            scrollbar-color: var(--gray-light) transparent;
+        }
+        
+        .category-cards::-webkit-scrollbar {
+            height: 6px;
+        }
+        
+        .category-cards::-webkit-scrollbar-thumb {
+            background-color: var(--gray-light);
+            border-radius: 10px;
+        }
+        
+        .category-cards::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        
+        .category-card {
+            background-color: white;
+            border-radius: var(--radius-sm);
+            box-shadow: 0 3px 10px var(--shadow);
+            padding: 16px;
+            min-width: 120px;
+            text-align: center;
+            transition: var(--transition);
+            cursor: pointer;
+            flex-shrink: 0;
+        }
+        
+        .category-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+        }
+        
+        .category-icon {
+            font-size: 30px;
+            margin-bottom: 12px;
+        }
+        
+        .category-name {
+            font-weight: 600;
+            font-size: 14px;
+        }
+        
+        /* Featured games */
+        .featured-games {
+            margin-bottom: 50px;
+        }
+        
+        .game-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+            gap: 24px;
+        }
+        
+        .game-card {
+            background-color: white;
+            border-radius: var(--radius);
+            box-shadow: 0 4px 12px var(--shadow);
+            overflow: hidden;
+            transition: var(--transition);
+            cursor: pointer;
+            position: relative;
+        }
+        
+        .game-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+        
+        .game-img {
+            height: 160px;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .game-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, var(--primary-light), var(--accent));
+            opacity: 0.8;
+        }
+        
+        .game-icon {
+            position: relative;
+            z-index: 1;
+            font-size: 48px;
+            color: white;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+        
+        .game-category-tag {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 20px;
+            padding: 4px 12px;
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--primary-dark);
+            z-index: 1;
+        }
+        
+        .game-info {
+            padding: 18px;
+        }
+        
+        .game-title {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: var(--dark);
+        }
+        
+        .game-description {
+            font-size: 14px;
+            color: var(--gray);
+            margin-bottom: 12px;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+        
+        .game-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 13px;
+        }
+        
+        .game-rating {
+            color: #ff9500;
+            font-weight: 500;
+        }
+        
+        .play-now {
+            display: inline-block;
+            background-color: var(--primary);
+            color: white;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 12px;
+            transition: var(--transition);
+        }
+        
+        .play-now:hover {
+            background-color: var(--primary-dark);
+        }
+        
+        /* New games */
+        .new-games {
+            margin-bottom: 50px;
+        }
+        
+        /* Game details */
+        .game-details {
+            display: none; /* Hidden by default */
+            margin: 30px 0;
+        }
+        
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            color: var(--primary);
+            font-weight: 500;
+            margin-bottom: 20px;
+            transition: var(--transition);
+        }
+        
+        .back-button:hover {
+            color: var(--primary-dark);
+        }
+        
+        .back-button svg {
+            margin-right: 6px;
+            width: 18px;
+            height: 18px;
+        }
+        
+        .game-container {
+            background-color: white;
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: 0 5px 20px var(--shadow);
+            margin-bottom: 30px;
+        }
+        
+        .game-header {
+            padding: 30px;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .game-header::after {
+            content: '';
+            position: absolute;
+            right: -50px;
+            bottom: -50px;
+            width: 200px;
+            height: 200px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+        }
+        
+        .game-header::before {
+            content: '';
+            position: absolute;
+            left: -30px;
+            top: -30px;
+            width: 150px;
+            height: 150px;
+            background-color: rgba(255, 255, 255, 0.05);
+            border-radius: 50%;
+        }
+        
+        .game-title-large {
+            font-size: 32px;
+            font-weight: 800;
+            margin-bottom: 12px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .game-subtitle {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .game-category-badge {
+            background-color: rgba(255, 255, 255, 0.2);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 14px;
+            backdrop-filter: blur(5px);
+        }
+        
+        .game-rating-large {
+            display: flex;
+            align-items: center;
+            color: #fff;
+            font-weight: 500;
+        }
+        
+        .game-rating-large svg {
+            width: 18px;
+            height: 18px;
+            fill: #ffbb00;
+            margin-right: 5px;
+        }
+        
+        .game-frame-container {
+            position: relative;
+            aspect-ratio: 16 / 9;
+            width: 100%;
+        }
+        
+        .game-frame {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        
+        .game-content {
+            padding: 30px;
+        }
+        
+        .game-section {
+            margin-bottom: 25px;
+        }
+        
+        .game-section-title {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: var(--dark);
+        }
+        
+        .game-description-full {
+            line-height: 1.7;
+            color: var(--gray);
+            margin-bottom: 20px;
+        }
+        
+        .how-to-play {
+            background-color: #f8f9fa;
+            padding: 20px;
+            border-radius: var(--radius-sm);
+            margin-top: 20px;
+        }
+        
+        .how-to-play-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: var(--primary-dark);
+            display: flex;
+            align-items: center;
+        }
+        
+        .how-to-play-title svg {
+            width: 20px;
+            height: 20px;
+            margin-right: 8px;
+        }
+        
+        .how-to-play-list {
+            padding-left: 20px;
+        }
+        
+        .how-to-play-list li {
+            margin-bottom: 10px;
+            position: relative;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: #28293e;
+            color: #f8f9fa;
+            padding: 30px 0;
+            margin-top: 60px;
+        }
+        
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            font-size: 22px;
+            font-weight: 700;
+            color: white;
+        }
+        
+        .footer-logo-icon {
+            background-color: var(--primary);
+            width: 28px;
+            height: 28px;
+            border-radius: 6px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 8px;
+            font-size: 14px;
+        }
+        
+        .footer-links {
+            display: flex;
+            gap: 20px;
+        }
+        
+        .footer-links a {
+            color: #b0b3b8;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: white;
+        }
+        
+        .copyright {
+            width: 100%;
+            text-align: center;
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid #3a3b50;
+            font-size: 14px;
+            color: #b0b3b8;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            nav ul {
+                margin-top: 15px;
+                justify-content: center;
+            }
+            
+            .banner h1 {
+                font-size: 28px;
+            }
+            
+            .game-title-large {
+                font-size: 24px;
+            }
+            
+            .game-subtitle {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+            
+            .game-content {
+                padding: 20px;
+            }
+            
+            .footer-content {
+                flex-direction: column;
+                text-align: center;
+                justify-content: center;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .game-grid {
+                grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+                gap: 15px;
+            }
+            
+            .game-img {
+                height: 120px;
+            }
+            
+            .game-card .game-title {
+                font-size: 16px;
+            }
+            
+            .game-description {
+                -webkit-line-clamp: 1;
+            }
+            
+            .section-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 5px;
+            }
+            
+            .view-all {
+                font-size: 13px;
+            }
+        }
+    </style>
 </head>
 <body>
+    <!-- Header -->
+    <header>
+        <div class="container header-content">
+            <a href="#" class="logo">
+                <div class="logo-icon">▶</div>
+                GoGame!
+            </a>
+            <nav>
+                <ul>
+                    <li><a href="#" class="active">Home</a></li>
+                    <li><a href="#">Popular</a></li>
+                    <li><a href="#">New</a></li>
+                    <li><a href="#">Rankings</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
+    <!-- Main Content -->
+    <main class="container">
+        <!-- Banner -->
+        <section class="banner">
+            <div class="banner-content">
+                <h1>Play Games, Have Fun!</h1>
+                <p>Thousands of curated casual games at your fingertips</p>
+                <div class="search-bar">
+                    <input type="text" placeholder="Search for games...">
+                    <button>Search</button>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Game Categories -->
+        <section class="categories">
+            <div class="section-header">
+                <h2 class="section-title">Game Categories</h2>
+                <a href="#" class="view-all">View All ›</a>
+            </div>
+            <div class="category-cards">
+                <div class="category-card" data-category="puzzle">
+                    <div class="category-icon">🧩</div>
+                    <div class="category-name">Puzzle</div>
+                </div>
+                <div class="category-card" data-category="arcade">
+                    <div class="category-icon">🎮</div>
+                    <div class="category-name">Arcade</div>
+                </div>
+                <div class="category-card" data-category="card">
+                    <div class="category-icon">🃏</div>
+                    <div class="category-name">Card</div>
+                </div>
+                <div class="category-card" data-category="action">
+                    <div class="category-icon">🏃</div>
+                    <div class="category-name">Action</div>
+                </div>
+                <div class="category-card" data-category="strategy">
+                    <div class="category-icon">♟️</div>
+                    <div class="category-name">Strategy</div>
+                </div>
+                <div class="category-card" data-category="sports">
+                    <div class="category-icon">⚽</div>
+                    <div class="category-name">Sports</div>
+                </div>
+                <div class="category-card" data-category="simulation">
+                    <div class="category-icon">🏙️</div>
+                    <div class="category-name">Simulation</div>
+                </div>
+                <div class="category-card" data-category="word">
+                    <div class="category-icon">📝</div>
+                    <div class="category-name">Word</div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Featured Games -->
+        <section class="featured-games" id="gamesList">
+            <div class="section-header">
+                <h2 class="section-title">Featured Games</h2>
+                <a href="#" class="view-all">View All ›</a>
+            </div>
+            <div class="game-grid">
+                <div class="game-card" data-id="tetris">
+                    <div class="game-img">
+                        <div class="game-bg"></div>
+                        <div class="game-icon">🎮</div>
+                        <div class="game-category-tag">Puzzle</div>
+                    </div>
+                    <div class="game-info">
+                        <h3 class="game-title">Tetris</h3>
+                        <p class="game-description">Classic block-stacking game that tests your reflexes and strategy</p>
+                        <div class="game-meta">
+                            <div class="game-rating">★★★★★</div>
+                            <div class="play-now">Play Now</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="game-card" data-id="snake">
+                    <div class="game-img">
+                        <div class="game-bg"></div>
+                        <div class="game-icon">🐍</div>
+                        <div class="game-category-tag">Arcade</div>
+                    </div>
+                    <div class="game-info">
+                        <h3 class="game-title">Snake</h3>
+                        <p class="game-description">Control the snake to eat food while avoiding its growing body</p>
+                        <div class="game-meta">
+                            <div class="game-rating">★★★★☆</div>
+                            <div class="play-now">Play Now</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="game-card" data-id="memory">
+                    <div class="game-img">
+                        <div class="game-bg"></div>
+                        <div class="game-icon">🎴</div>
+                        <div class="game-category-tag">Puzzle</div>
+                    </div>
+                    <div class="game-info">
+                        <h3 class="game-title">Memory Match</h3>
+                        <p class="game-description">Test your memory by finding matching pairs of cards</p>
+                        <div class="game-meta">
+                            <div class="game-rating">★★★★☆</div>
+                            <div class="play-now">Play Now</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="game-card" data-id="2048">
+                    <div class="game-img">
+                        <div class="game-bg"></div>
+                        <div class="game-icon">🔢</div>
+                        <div class="game-category-tag">Puzzle</div>
+                    </div>
+                    <div class="game-info">
+                        <h3 class="game-title">2048</h3>
+                        <p class="game-description">Merge identical numbers and see how high you can go</p>
+                        <div class="game-meta">
+                            <div class="game-rating">★★★★★</div>
+                            <div class="play-now">Play Now</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="game-card" data-id="flappybird">
+                    <div class="game-img">
+                        <div class="game-bg"></div>
+                        <div class="game-icon">🐦</div>
+                        <div class="game-category-tag">Arcade</div>
+                    </div>
+                    <div class="game-info">
+                        <h3 class="game-title">Flappy Bird</h3>
+                        <p class="game-description">Navigate the bird through pipes and see how far you can go</p>
+                        <div class="game-meta">
+                            <div class="game-rating">★★★★☆</div>
+                            <div class="play-now">Play Now</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="game-card" data-id="solitaire">
+                    <div class="game-img">
+                        <div class="game-bg"></div>
+                        <div class="game-icon">♠️</div>
+                        <div class="game-category-tag">Card</div>
+                    </div>
+                    <div class="game-info">
+                        <h3 class="game-title">Solitaire</h3>
+                        <p class="game-description">Classic card game where you arrange cards in specific sequences</p>
+                        <div class="game-meta">
+                            <div class="game-rating">★★★★☆</div>
+                            <div class="play-now">Play Now</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- New Games -->
+        <section class="new-games">
+            <div class="section-header">
+                <h2 class="section-title">New Arrivals</h2>
+                <a href="#" class="view-all">View All ›</a>
+            </div>
+            <div class="game-grid">
+                <div class="game-card" data-id="minesweeper">
+                    <div class="game-img">
+                        <div class="game-bg"></div>
+                        <div class="game-icon">💣</div>
+                        <div class="game-category-tag">Puzzle</div>
+                    </div>
+                    <div class="game-info">
+                        <h3 class="game-title">Minesweeper</h3>
+                        <p class="game-description">Classic logic game where you avoid hidden mines</p>
+                        <div class="game-meta">
+                            <div class="game-rating">★★★★☆</div>
+                            <div class="play-now">Play Now</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="game-card" data-id="chess">
+                    <div class="game-img">
+                        <div class="game-bg"></div>
+                        <div class="game-icon">♞</div>
+                        <div class="game-category-tag">Strategy</div>
+                    </div>
+                    <div class="game-info">
+                        <h3 class="game-title">Chess</h3>
+                        <p class="game-description">Challenge your strategic thinking and defeat your opponent</p>
+                        <div class="game-meta">
+                            <div class="game-rating">★★★★★</div>
+                            <div class="play-now">Play Now</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="game-card" data-id="sudoku">
+                    <div class="game-img">
+                        <div class="game-bg"></div>
+                        <div class="game-icon">🔢</div>
+                        <div class="game-category-tag">Puzzle</div>
+                    </div>
+                    <div class="game-info">
+                        <h3 class="game-title">Sudoku</h3>
+                        <p class="game-description">Fill the grid so each row, column, and box contains 1-9</p>
+                        <div class="game-meta">
+                            <div class="game-rating">★★★★☆</div>
+                            <div class="play-now">Play Now</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="game-card" data-id="breakout">
+                    <div class="game-img">
+                        <div class="game-bg"></div>
+                        <div class="game-icon">🧱</div>
+                        <div class="game-category-tag">Arcade</div>
+                    </div>
+                    <div class="game-info">
+                        <h3 class="game-title">Breakout</h3>
+                        <p class="game-description">Control the paddle to bounce the ball and break all bricks</p>
+                        <div class="game-meta">
+                            <div class="game-rating">★★★★☆</div>
+                            <div class="play-now">Play Now</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Game Details -->
+        <section class="game-details" id="gameDetails">
+            <a href="#" class="back-button" id="backButton">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path d="M10.828 12l4.95 4.95-1.414 1.414L8 12l6.364-6.364 1.414 1.414z" fill="currentColor"></path></svg>
+                Back to Games
+            </a>
+            
+            <div class="game-container">
+                <div class="game-header">
+                    <h1 class="game-title-large" id="gameTitle">Game Title</h1>
+                    <div class="game-subtitle">
+                        <div class="game-category-badge" id="gameCategory">Game Category</div>
+                        <div class="game-rating-large">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" fill="currentColor"></path></svg>
+                            4.9
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="game-frame-container">
+                    <iframe id="gameFrame" class="game-frame" src="" allowfullscreen=""></iframe>
+                </div>
+                
+                <div class="game-content">
+                    <div class="game-section">
+                        <h3 class="game-section-title">About This Game</h3>
+                        <p class="game-description-full" id="gameDescription">Detailed game description will appear here...</p>
+                    </div>
+                    
+                    <div class="game-section">
+                        <div class="how-to-play">
+                            <h4 class="how-to-play-title">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path d="M12 22C6.477 22 2 17.523 2 12S6.477 2 12 2s10 4.477 10 10-4.477 10-10 10zm0-2a8 8 0 1 0 0-16 8 8 0 0 0 0 16zM11 7h2v2h-2V7zm0 4h2v6h-2v-6z" fill="currentColor"></path></svg>
+                                How To Play
+                            </h4>
+                            <ol class="how-to-play-list" id="gameInstructions">
+                                <li>Game instructions will appear here...</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <div class="footer-logo-icon">▶</div>
+                    GoGame!
+                </div>
+                <div class="footer-links">
+                    <a href="#">About</a>
+                    <a href="#">Privacy</a>
+                    <a href="#">Terms</a>
+                    <a href="#">Contact</a>
+                    <a href="#">Support</a>
+                </div>
+            </div>
+            <div class="copyright">
+                © 2025 GoGame! - All rights reserved. Play responsibly.
+            </div>
+        </div>
+    </footer>
+    
+    <!-- JavaScript -->
+    <script>
+        // Game data
+        const games = {
+            "tetris": {
+                title: "Tetris",
+                category: "Puzzle",
+                description: "Tetris is a classic block-stacking puzzle game originally designed and programmed by Russian game designer Alexey Pajitnov in 1984. In Tetris, players complete lines by moving differently shaped pieces (tetrominoes), which descend onto the playing field. The completed lines disappear and grant the player points, and the player can proceed to fill the vacated spaces. The game ends when the playing field is filled. The longer the player can delay this inevitable outcome, the higher their score will be. The game has been shown to increase the efficiency of players in a multitude of tasks and is frequently cited as an example of video games providing real-world benefits.",
+                instructions: [
+                    "Use the arrow keys to move pieces left and right",
+                    "Press up arrow to rotate pieces",
+                    "Press down arrow to speed up the descent",
+                    "Fill complete horizontal lines to clear them and score points",
+                    "Prevent the pieces from stacking up to the top of the screen"
+                ],
+                frameUrl: "https://tetris.com/play-tetris"
+            },
+            "snake": {
+                title: "Snake",
+                category: "Arcade",
+                description: "Snake is a classic arcade game that originated in the late 1970s. The player controls a snake-like line that grows in length as it consumes food items placed around the playing area. The primary objective is to eat as many food items as possible without colliding with the walls or the snake's own body, which grows longer with each food item eaten. The game becomes progressively more difficult as the snake's length increases, reducing the available space for maneuvering. Despite its simple concept, Snake remains one of the most recognizable and enduring video games, having been ported to countless platforms over the decades.",
+                instructions: [
+                    "Use arrow keys to control the direction of the snake",
+                    "Guide the snake to eat the food items that appear",
+                    "Each food item eaten makes the snake longer",
+                    "Avoid hitting the walls or the snake's own body",
+                    "Try to eat as many food items as possible to achieve a high score"
+                ],
+                frameUrl: "https://playsnake.org/"
+            },
+            "memory": {
+                title: "Memory Match",
+                category: "Puzzle",
+                description: "Memory Match, also known as Concentration or Pairs, is a card game that tests players' memory and concentration skills. The game begins with a set of cards face down, each with a matching pair somewhere in the arrangement. Players take turns flipping over two cards at a time, trying to find matching pairs. If the two cards match, they are removed from play; if they don't match, they are flipped back face down. The game continues until all pairs have been found. The objective is to find all pairs with as few turns as possible, requiring players to remember the positions of cards they've seen previously. This simple yet engaging game is excellent for enhancing short-term memory and concentration skills for players of all ages.",
+                instructions: [
+                    "Click on cards to flip them over",
+                    "You can flip two cards per turn",
+                    "If the two cards match, they remain face up",
+                    "If they don't match, they will be flipped back over",
+                    "The goal is to find all matching pairs with as few moves as possible"
+                ],
+                frameUrl: "https://memory.cloud/play/"
+            },
+            "2048": {
+                title: "2048",
+                category: "Puzzle",
+                description: "2048 is an addictive single-player puzzle game created by Italian developer Gabriele Cirulli in 2014. The game is played on a 4×4 grid, with numbered tiles that slide when a player moves them using the four arrow keys. Every time you move, a new tile randomly appears in an empty spot on the board with a value of either 2 or 4. Tiles slide as far as possible in the chosen direction until they are stopped by either another tile or the edge of the grid. If two tiles of the same number collide while moving, they will merge into a tile with the total value of the two tiles that collided. The resulting tile cannot merge with another tile again in the same move. The game is won when a tile with a value of 2048 appears on the board, hence the name of the game. After reaching the 2048 tile, players can continue to play to reach higher scores. The game is over when there are no empty cells and no adjacent tiles with the same value.",
+                instructions: [
+                    "Use arrow keys (up, down, left, right) to move tiles",
+                    "When two tiles with the same number touch, they merge into one",
+                    "After each move, a new tile will randomly appear (2 or 4)",
+                    "Try to create a tile with the number 2048",
+                    "Game ends when the board is full and no more moves are possible"
+                ],
+                frameUrl: "https://play2048.co/"
+            },
+            "flappybird": {
+                title: "Flappy Bird",
+                category: "Arcade",
+                description: "Flappy Bird is a mobile game developed by Vietnamese video game artist and programmer Dong Nguyen in 2013. The game quickly became a global phenomenon due to its simple yet challenging gameplay. Players control a bird, attempting to fly between columns of green pipes without hitting them. The player taps the screen to make the bird fly upward; if left alone, the bird falls due to gravity. Each successful pass through a pair of pipes awards the player one point, with the objective being to achieve the highest score possible. The game is renowned for its high difficulty level and addictive nature, despite its simple controls and minimalist graphics. Though the original game was removed from mobile app stores in 2014 by its creator, numerous clones and variations continue to keep the Flappy Bird legacy alive.",
+                instructions: [
+                    "Tap the screen or press spacebar to make the bird fly upward",
+                    "The bird automatically falls if not tapped",
+                    "Avoid hitting the green pipes or the ground",
+                    "Each pipe you pass gives you 1 point",
+                    "Try to achieve the highest score possible"
+                ],
+                frameUrl: "https://flappybird.io/"
+            },
+            "solitaire": {
+                title: "Solitaire",
+                category: "Card",
+                description: "Solitaire, also known as Patience, is a genre of card games played by a single player. Klondike Solitaire, which is the version most commonly referred to as 'Solitaire,' gained widespread popularity when it was included with Microsoft Windows in the 1990s. The game uses a standard 52-card deck and involves arranging cards in specific sequences and patterns. Players start with cards arranged in seven columns, with only the top card in each column facing up. Additional cards form a stockpile. The goal is to move all cards to four foundation piles, each starting with an Ace and building up by suit to King. In the tableau (the seven columns), cards can be arranged in descending order with alternating colors. This classic card game tests the player's strategy and patience, offering a calming yet mentally stimulating pastime that has stood the test of time.",
+                instructions: [
+                    "In the tableau area, build down by alternate colors (red on black, black on red)",
+                    "Only the top card of each pile can be moved",
+                    "An Ace can be moved to an empty foundation pile",
+                    "In foundation piles, build up by suit from Ace to King",
+                    "A King can be moved to an empty tableau column",
+                    "The goal is to move all cards to the foundation piles"
+                ],
+                frameUrl: "https://www.solitr.com/"
+            },
+            "minesweeper": {
+                title: "Minesweeper",
+                category: "Puzzle",
+                description: "Minesweeper is a single-player puzzle game that originated in the 1960s and became widely known as part of Microsoft Windows in the 1990s. The game takes place on a rectangular grid, where some cells contain hidden mines. The player's objective is to clear the board without detonating any mines. When a cell is clicked, it reveals either a number (indicating how many mines are adjacent to that cell), a blank space (if no mines are adjacent), or a mine (which ends the game). Using the numbers as clues, players can deduce which cells contain mines and mark them with flags. The game requires logical thinking and sometimes risk assessment, as situations may arise where the player must guess. Minesweeper has remained popular for decades due to its simple rules yet challenging gameplay, providing a perfect blend of puzzle-solving and strategic risk management.",
+                instructions: [
+                    "Left-click a cell to reveal it",
+                    "If you hit a mine, the game is over",
+                    "Numbers indicate how many mines are in the eight surrounding cells",
+                    "Right-click to flag a cell you believe contains a mine",
+                    "The goal is to reveal all non-mine cells and flag all mines"
+                ],
+                frameUrl: "https://minesweeper.online/"
+            },
+            "chess": {
+                title: "Chess",
+                category: "Strategy",
+                description: "Chess is a two-player strategy board game played on a checkered board with 64 squares arranged in an 8×8 grid. The game originated in northern India during the Gupta Empire around the 6th century AD, and the modern rules have been in place since the late 15th century. Each player begins with 16 pieces: one king, one queen, two rooks, two knights, two bishops, and eight pawns. The objective of the game is to checkmate the opponent's king, whereby the king is under immediate attack (in 'check') and there is no way for it to escape. Chess has been described as one of the most intellectually challenging games, requiring foresight, strategic thinking, and the ability to anticipate an opponent's moves several steps ahead. Despite its ancient origins, chess remains a popular global pastime, has spawned numerous theoretical analyses, and has evolved into both a recreational activity and a competitive sport with international championships.",
+                instructions: [
+                    "White moves first, then players alternate turns moving one piece at a time",
+                    "Each type of piece has its specific movement rules",
+                    "Capture an opponent's piece by moving your piece to its square",
+                    "The game ends when one player's king is in checkmate (cannot escape capture)",
+                    "Other end conditions include draw, stalemate, or resignation"
+                ],
+                frameUrl: "https://www.chess.com/play/computer"
+            },
+            "sudoku": {
+                title: "Sudoku",
+                category: "Puzzle",
+                description: "Sudoku is a logic-based number placement puzzle that originated in Switzerland and gained widespread popularity in Japan before becoming a global phenomenon in the early 2000s. The objective is to fill a 9×9 grid with digits so that each column, each row, and each of the nine 3×3 subgrids (also called boxes or regions) contains all of the digits from 1 to 9. The puzzle setter provides a partially completed grid, which has a unique solution. Solving Sudoku puzzles requires no mathematical calculations but rather logical reasoning and pattern recognition. The puzzles can range from very easy to extremely challenging, making Sudoku accessible to beginners while still offering a significant challenge to experienced puzzle solvers. Due to its simple rules yet complex problem-solving requirements, Sudoku has become one of the most popular puzzles worldwide, appearing daily in newspapers, puzzle books, and digital applications.",
+                instructions: [
+                    "Fill in the grid so every row, column, and 3×3 box contains the digits 1-9",
+                    "Each digit can only appear once in each row",
+                    "Each digit can only appear once in each column",
+                    "Each digit can only appear once in each 3×3 box",
+                    "Use logic to deduce the correct numbers for each cell"
+                ],
+                frameUrl: "https://sudoku.com/"
+            },
+            "breakout": {
+                title: "Breakout",
+                category: "Arcade",
+                description: "Breakout is an iconic arcade game developed and published by Atari in 1976. Created by Steve Wozniak with input from Steve Jobs, the game built upon the successful formula of Pong but introduced new gameplay mechanics. In Breakout, players control a paddle at the bottom of the screen, using it to bounce a ball toward a wall of bricks at the top. When the ball hits a brick, the brick disappears, and the ball bounces back. The player's goal is to eliminate all bricks without letting the ball fall past their paddle. As levels progress, the ball might move faster or the paddle might shrink, increasing the challenge. The game's concept has inspired countless variants and has had a profound influence on the video game industry, with elements of Breakout appearing in many games across different genres. Its simple yet addictive gameplay has made it a classic that continues to be enjoyed by gamers of all ages.",
+                instructions: [
+                    "Use mouse or arrow keys to move the paddle left and right",
+                    "Bounce the ball off the paddle to hit the bricks",
+                    "Don't let the ball fall below the paddle",
+                    "Clear all bricks to advance to the next level",
+                    "Some bricks may require multiple hits to break"
+                ],
+                frameUrl: "https://www.crazygames.com/game/atari-breakout"
+            }
+        };
+        
+        // Click event for game cards - add event listeners to all game cards
+        document.querySelectorAll('.game-card').forEach(card => {
+            card.addEventListener('click', function() {
+                const gameId = this.getAttribute('data-id');
+                showGameDetails(gameId);
+            });
+        });
+        
+        // Back button event
+        document.getElementById('backButton').addEventListener('click', function(e) {
+            e.preventDefault();
+            backToGamesList();
+        });
+        
+        // Show game details
+        function showGameDetails(gameId) {
+            const gamesList = document.querySelectorAll('.featured-games, .new-games, .categories');
+            const gameDetails = document.getElementById('gameDetails');
+            const game = games[gameId];
+            
+            if (game) {
+                // Update game details
+                document.getElementById('gameTitle').textContent = game.title;
+                document.getElementById('gameCategory').textContent = game.category;
+                document.getElementById('gameDescription').textContent = game.description;
+                
+                // Update game instructions
+                const instructionsList = document.getElementById('gameInstructions');
+                instructionsList.innerHTML = '';
+                game.instructions.forEach(instruction => {
+                    const li = document.createElement('li');
+                    li.textContent = instruction;
+                    instructionsList.appendChild(li);
+                });
+                
+                // Set iframe source
+                document.getElementById('gameFrame').src = game.frameUrl;
+                
+                // Hide game lists, show game details
+                gamesList.forEach(el => {
+                    el.style.display = 'none';
+                });
+                gameDetails.style.display = 'block';
+                
+                // Scroll to top
+                window.scrollTo(0, 0);
+            }
+        }
+        
+        // Return to games list
+        function backToGamesList() {
+            const gamesList = document.querySelectorAll('.featured-games, .new-games, .categories');
+            const gameDetails = document.getElementById('gameDetails');
+            
+            // Clear iframe to stop the game
+            document.getElementById('gameFrame').src = '';
+            
+            // Show game lists, hide game details
+            gamesList.forEach(el => {
+                el.style.display = 'block';
+            });
+            gameDetails.style.display = 'none';
+            
+            // Scroll to top
+            window.scrollTo(0, 0);
+        }
+        
+        // Category card click event
+        document.querySelectorAll('.category-card').forEach(card => {
+            card.addEventListener('click', function() {
+                const category = this.getAttribute('data-category');
+                // Filter games by category functionality could be implemented here
+                // Currently just shows an alert with the category name
+                alert(`You selected the ${this.querySelector('.category-name').textContent} category`);
+            });
+        });
+    </script>
 
-    Hello Github page.
+
 </body>
 </html>
