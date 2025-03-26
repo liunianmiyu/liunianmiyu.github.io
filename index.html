@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GoGame - Play Free Online Games | Browser Games Collection</title>  <!-- 标题翻译 -->
+    <meta name="description" content="GoGame offers the best collection of free online browser games. Discover and play exciting overseas games instantly, no download required.">
+    <meta name="keywords" content="free online games, browser games, play games online, no download games, instant play games, overseas games, game collection">
+    <meta name="generator" content="GoGame">
+    <meta property="og:title" content="GoGame! - Overseas Online Game Navigation">
+    <meta property="og:description" content="Discover and play the best overseas online games at GoGame! Your ultimate guide to fun and exciting browser games.">
+    <meta property="og:image" content="https://ggame123.com/images/og-image.jpg">
+    <meta property="og:url" content="https://ggame123.com/">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="GoGame!">
+    <link rel="canonical" href="https://ggame123.com/">
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <link rel="preload" href="css/styles.css" as="style" onload="this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="css/styles.css"></noscript>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "GoGame",
+        "url": "https://ggame123.com/",
+        "description": "Play free online games instantly on GoGame. No downloads required. Discover the best collection of browser games.",
+        "potentialAction": {
+            "@type": "SearchAction",
+            "target": "https://ggame123.com/?q={search_term_string}",
+            "query-input": "required name=search_term_string"
+        }
+    }
+    </script>
+    <link rel="alternate" hreflang="en" href="https://ggame123.com/" />
+</head>
+<body>
+    <button class="menu-toggle" id="menuToggle">☰</button>
+    
+    <aside class="sidebar" id="sidebar">
+        <div class="logo">
+            <a href="index.html">Go<span>Game</span>!</a>
+        </div>
+        <!-- 分类将由 category.js 动态生成 -->
+    </aside>
+    
+    <main class="main-content">
+        <div class="header">
+            <h1>Discover Games</h1>  <!-- 主标题翻译 -->
+            <div class="search-bar">
+                <input type="text" id="searchInput" placeholder="Search games...">
+                <button onclick="searchGames()">Search</button>
+            </div>
+        </div>
+        
+        <div class="game-grid" id="gameGrid">
+            <!-- 游戏卡片将通过JS动态生成 -->
+        </div>
+        <div class="load-more-container">
+            <button id="loadMore" class="load-more-btn">加载更多</button>
+            <div id="noMoreGames" style="display: none; padding: 20px; color: #666;">没有更多游戏了</div>
+        </div>
+    </main>
+    
+    <script src="js/categories-data.js"></script>
+    <script src="js/games-data.js"></script> <!-- 调整顺序 -->
+    <script src="js/category.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

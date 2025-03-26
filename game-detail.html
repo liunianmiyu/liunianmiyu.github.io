@@ -1,0 +1,67 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{游戏名称} - 免费在线游戏 | GoGame</title>
+    <meta name="description" content="在GoGame上免费玩{游戏名称}！{简短游戏描述}。立即开始游戏，无需下载，支持全屏模式。">
+    <link rel="preload" href="css/styles.css" as="style" onload="this.rel='stylesheet'">
+    <link rel="preload" href="css/detail.css" as="style" onload="this.rel='stylesheet'">
+    <link rel="preload" href="js/detail.js" as="script">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "VideoGame",
+        "name": "{游戏名称}",
+        "description": "{游戏描述}",
+        "gamePlatform": "Web Browser",
+        "playMode": "Single Player",
+        "applicationCategory": "Game",
+        "url": "https://ggame123.com/game-detail.html?id={游戏ID}",
+        "image": "{游戏封面图片URL}",
+        "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "{游戏评分}",
+            "ratingCount": "{评价数量}"
+        }
+    }
+    </script>
+</head>
+<body>
+    <button class="menu-toggle" id="menuToggle">☰</button>
+    
+    <aside class="sidebar" id="sidebar">
+        <div class="logo">
+            <a href="index.html">Go<span>Game</span>!</a>
+        </div>
+        <!-- 分类将由 category.js 动态生成 -->
+    </aside>
+    <main class="main-content">
+        <!-- 将按钮移动至main-content容器末尾 -->
+        <div class="game-frame-container">
+            <iframe class="game-frame" id="gameFrame" src="" allow="fullscreen"></iframe>
+            <button class="fullscreen-btn" id="FullScreenPlay">
+                <!-- <i class="fas fa-expand"></i> -->
+                 Full Screen Play
+            </button>
+        </div>
+        <div class="detail-page">
+            <div class="detail-content">                
+                    <div class="game-description">
+                        <h1 id="detailTitle" style="margin-bottom: 20px;">Discover Games</h1>
+                        <div class="desc-title">Game Description</div>
+                        <p id="gameDescription">游戏描述内容将显示在这里...</p>
+                        <div class="desc-title" style="margin-top: 20px;">Game Play</div>
+                        <p id="gameInstructions">游戏玩法说明将显示在这里...</p>
+                    </div>
+            </div>
+        </div>
+    </main>
+    <script src="js/categories-data.js"></script>
+    <script src="js/category.js"></script>
+    <script src="js/games-data.js"></script>
+    <script src="js/detail.js"></script>
+</body>
+</html>
