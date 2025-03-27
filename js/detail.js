@@ -60,9 +60,9 @@ function initGameDetail() {
     
     // 更新页面内容
     document.getElementById('detailTitle').textContent = game.title;
-    document.getElementById('gameFrame').src = game.url;
-    document.getElementById('gameDescription').textContent = game.description;
-    document.getElementById('gameInstructions').textContent = game.instructions;
+    document.getElementById('gameFrame').src = game.play_url;
+    document.getElementById('gameDescription').innerHTML = game.description;
+    // document.getElementById('gameInstructions').textContent = game.instructions;
     
     // 设置评分详情
     document.getElementById('detailRatingValue').textContent = game.rating.toFixed(1);

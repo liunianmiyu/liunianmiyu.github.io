@@ -94,7 +94,7 @@ function createGameCard(game) {
     card.setAttribute('data-id', game.id);
     
     card.innerHTML = `
-        <div class="game-thumbnail" style="${game.thumbImage ? `background-image: url('${game.thumbImage}');` : `background: ${game.thumbnail}`}">
+        <div class="game-thumbnail" style="${game.cover_url ? `background-image: url('${game.cover_url}');` : `background: ${game.thumbnail}`}">
             <div class="game-rating-badge">
                 <i>★</i> ${game.rating.toFixed(1)}
             </div>
@@ -107,7 +107,7 @@ function createGameCard(game) {
                     <div class="stars">
                         ${createStarsHtml(game.rating)}
                     </div>
-                    <span class="review-count">(${game.reviewCount})</span>
+                    <span class="review-count">(${game.reviews})</span>
                 </div>
                 <button class="play-btn" onclick="window.open('game-detail.html?id=${game.id}', '_blank')">Play</button>
             </div>
@@ -118,7 +118,7 @@ function createGameCard(game) {
 
 
 let currentPage = 1;
-const pageSize = 30;
+const pageSize = 15;
 let currentGames = []; // 当前显示的游戏列表
 
 // 初始化游戏网格
